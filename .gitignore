@@ -102,3 +102,6 @@ ENV/
 
 # Secrets
 config.py
+
+# WIP
+*.swp
