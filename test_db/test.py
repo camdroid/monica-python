@@ -1,6 +1,6 @@
 import sys
-sys.path.append('/Users/cherringshaw/projects/monica-python')
-sys.path.append('/Users/cherringshaw/projects/monica-python/db')
+sys.path.append('../monica-python')
+sys.path.append('../monica-python/db')
 
 import db
 import unittest
