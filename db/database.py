@@ -8,8 +8,10 @@ class DB(object):
             host=db_host,
             user=db_user,
             password=db_pass,
+            database=db_name,
             cursorclass=pymysql.cursors.DictCursor)
-        self.create_database(db_name)
+        # XXX Should make this idempotent, but just comment it out for now
+        # self.create_database(db_name)
 
     def create_database(self, name):
         try:
@@ -18,7 +20,16 @@ class DB(object):
                 cursor.execute(sql)
             self.db.commit()
         finally:
-            self.db.close()
+            # self.db.close()
+            pass
 
-    def get_db_conn(self):
-        return self.db
+    def execute(self, query):
+        with self.db.cursor() as cursor:
+            cursor.execute(query)
+            res = []
+            for row in cursor:
+                res.append(row)
+        return res
+
+def get_db_conn():
+    return DB()

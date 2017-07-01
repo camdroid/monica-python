@@ -2,10 +2,17 @@ import sys
 sys.path.append('/Users/cherringshaw/projects/monica-python')
 sys.path.append('/Users/cherringshaw/projects/monica-python/db')
 
-from db import contacts
+import db
+import unittest
 
-def main():
-    pass
+class ContactsTest(unittest.TestCase):
+    def setUp(self):
+        self.db = db.database.get_db_conn()
+
+    def test_get_contact(self):
+        contacts = db.contacts.get_contacts(self.db)
+        self.assertEqual(contacts[0]['cid'], 1)
+        self.assertEqual(contacts[0]['name'], 'cam')
 
 if __name__ == '__main__':
-    main()
+    unittest.main()
