@@ -1,20 +1,24 @@
 import pymysql.cursors
+from config import db_host, db_user, db_pass, db_name
 
 
 class DB(object):
     def __init__(self):
-        self.connection = pymysql.connect(
-            host='127.0.0.1',
-            user='root',
-            password='',
+        self.db = pymysql.connect(
+            host=db_host,
+            user=db_user,
+            password=db_pass,
             cursorclass=pymysql.cursors.DictCursor)
-        self.create_database()
+        self.create_database(db_name)
 
-    def create_database(self):
+    def create_database(self, name):
         try:
-            with connection.cursor() as cursor:
-                sql = 'CREATE DATABASE IF NOT EXISTS `monica-python`'
+            with self.db.cursor() as cursor:
+                sql = "CREATE DATABASE IF NOT EXISTS %s" % name
                 cursor.execute(sql)
-            connection.commit()
+            self.db.commit()
         finally:
-            connection.close()
+            self.db.close()
+
+if __name__ == '__main__':
+    db = DB()
