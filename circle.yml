@@ -12,6 +12,7 @@ jobs:
       - image: python:3.6.1
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD=true
+            MYSQL_HOST=127.0.0.1
             MYSQL_USER=root
             MYSQL_PASSWORD=ubuntu
             MYSQL_DATABASE=circle_test
