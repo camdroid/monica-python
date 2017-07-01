@@ -1,0 +1,7 @@
+version: 2
+machine:
+  python:
+    version: 3.6.a
+database:
+  override:
+    - mysql -u root circle_test < schema/start.sql
