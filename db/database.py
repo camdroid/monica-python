@@ -20,5 +20,5 @@ class DB(object):
         finally:
             self.db.close()
 
-if __name__ == '__main__':
-    db = DB()
+    def get_db_conn(self):
+        return self.db
