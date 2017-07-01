@@ -1,18 +1,20 @@
-from sqlalchemy import *
-from sqlalchemy.ext.declarative import declarative_base
-from config import db_host, db_pass, db_user, db_name
-
-Base = declarative_base()
-
-engine = create_engine("mysql+pymysql://{}:{}@{}/{}".format(db_user, db_pass, db_host, db_name),
-                       connect_args= dict(host=db_host, port=3306), echo=True)
-
-class Contact(Base):
-    __tablename__ = 'contacts'
-    id = Column(Integer, primary_key=True)
-    name = Column(String(40))
+import pymysql.cursors
 
 
-Base.metadata.create_all(engine)
- 
+class DB(object):
+    def __init__(self):
+        self.connection = pymysql.connect(
+            host='127.0.0.1',
+            user='root',
+            password='',
+            cursorclass=pymysql.cursors.DictCursor)
+        self.create_database()
 
+    def create_database(self):
+        try:
+            with connection.cursor() as cursor:
+                sql = 'CREATE DATABASE IF NOT EXISTS `monica-python`'
+                cursor.execute(sql)
+            connection.commit()
+        finally:
+            connection.close()
