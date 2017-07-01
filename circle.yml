@@ -10,6 +10,11 @@ jobs:
     working_directory: ~/monica-python
     docker:
       - image: python:3.6.1
+        environment:
+          - MYSQL_ALLOW_EMPTY_PASSWORD=true
+            MYSQL_USER=root
+            MYSQL_PASSWORD=ubuntu
+            MYSQL_DATABASE=circle_test
     steps:
       - checkout
       - run: pip install -r requirements.txt
