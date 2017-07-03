@@ -32,4 +32,7 @@ class DB(object):
         return res
 
 def get_db_conn():
-    return DB()
+    try:
+        return DB()
+    except Exception e:
+        print('{}@{}:{}, {}'.format(db_user, db_host, db_name, db_pass))
