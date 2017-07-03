@@ -34,5 +34,6 @@ class DB(object):
 def get_db_conn():
     try:
         return DB()
-    except Exception e:
+    except Exception as e:
         print('{}@{}:{}, {}'.format(db_user, db_host, db_name, db_pass))
+        raise e
