@@ -10,9 +10,17 @@ class ContactsTest(unittest.TestCase):
         self.db = db.database.get_db_conn()
 
     def test_get_contact(self):
+        # Without having add_contact working, can't test that it's reading.
+        # Just check it's not failing.
         contacts = db.contacts.get_contacts(self.db)
-        self.assertEqual(contacts[0]['cid'], 1)
-        self.assertEqual(contacts[0]['name'], 'cam')
+
+    def test_add_contact(self):
+        contact = db.contacts.Contact('cam')
+        real = db.contacts.add_contact(self.db, contact)
+        print(real.cid)
+        actuals = db.contacts.get_contact(self.db, cid=real.cid)
+        import pdb; pdb.set_trace()
+        self.assertEqual(real, actuals[0])
 
 if __name__ == '__main__':
     unittest.main()

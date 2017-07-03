@@ -24,9 +24,12 @@ class DB(object):
             # self.db.close()
             pass
 
-    def execute(self, query):
+    def execute(self, query, params=None):
         with self.db.cursor() as cursor:
-            cursor.execute(query)
+            if params:
+                cursor.execute(query, params)
+            else:
+                cursor.execute(query)
             res = []
             for row in cursor:
                 res.append(row)
