@@ -17,10 +17,8 @@ class ContactsTest(unittest.TestCase):
     def test_add_contact(self):
         contact = db.contacts.Contact('cam')
         real = db.contacts.add_contact(self.db, contact)
-        print(real.cid)
-        actuals = db.contacts.get_contact(self.db, cid=real.cid)
-        import pdb; pdb.set_trace()
-        self.assertEqual(real, actuals[0])
+        actual = db.contacts.get_contact(self.db, cid=real.cid)
+        self.assertEqual(real, actual)
 
 if __name__ == '__main__':
     unittest.main()
