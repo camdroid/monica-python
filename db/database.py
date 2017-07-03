@@ -9,6 +9,7 @@ class DB(object):
             user=db_user,
             password=db_pass,
             database=db_name,
+            unix_socket='/tmp/mysql.sock',
             cursorclass=pymysql.cursors.DictCursor)
         # XXX Should make this idempotent, but just comment it out for now
         # self.create_database(db_name)
