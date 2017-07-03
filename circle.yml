@@ -10,6 +10,7 @@ jobs:
     working_directory: ~/monica-python
     docker:
       - image: python:3.6.1
+      - image: mysql:5.7
     steps:
       - checkout
       - run: pip install -r requirements.txt
