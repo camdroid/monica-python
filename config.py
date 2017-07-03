@@ -11,4 +11,4 @@ except:
 db_host = default.get('host', '127.0.0.1')
 db_pass = default.get('pass', '')
 db_user = default.get('user', 'ubuntu')
-db_name = default.get('name', 'circle-test')
+db_name = default.get('name', 'circle_test')
