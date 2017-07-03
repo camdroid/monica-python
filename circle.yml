@@ -4,12 +4,10 @@ machine:
     version: 3.6.1
 database:
   override:
-    - mysql -u root circle_test < schema/start.sql
+    - mysql -u ubuntu circle_test < schema/start.sql
 jobs:
   build:
     working_directory: ~/monica-python
-    docker:
-      - image: python:3.6.1
     steps:
       - checkout
       - run: pip install -r requirements.txt
