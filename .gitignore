@@ -101,7 +101,7 @@ ENV/
 .mypy_cache/
 
 # Secrets
-config.py
+.toml
 
 # WIP
 *.swp
