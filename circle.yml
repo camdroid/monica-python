@@ -2,9 +2,6 @@ version: 2
 machine:
   python:
     version: 3.6.1
-database:
-  override:
-    - mysql -u ubuntu circle_test < schema/start.sql
 jobs:
   build:
     working_directory: ~/monica-python
