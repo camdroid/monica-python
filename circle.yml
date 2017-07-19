@@ -11,6 +11,8 @@ jobs:
     docker:
       - image: python:3.6.1
       - image: mysql:5.7
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: true
     steps:
       - checkout
       - run: apt-get install -y libmysqlclient-dev
