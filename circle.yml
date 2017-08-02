@@ -6,8 +6,8 @@ jobs:
   build:
     working_directory: ~/monica-python
     docker:
-      - image: python:3.6.1
-      - image: mysql:5.7
+      - image: circleci/python:3.6.1
+      - image: circleci/mysql:5.7
         environment:
             MYSQL_ALLOW_EMPTY_PASSWORD: true
     steps:
