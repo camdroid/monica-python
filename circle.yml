@@ -13,11 +13,6 @@ jobs:
     steps:
       - checkout
       - run: sudo apt-get update
-      - run:
-          name: Install dockerize
-          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-          environment:
-            DOCKERIZE_VERSION: v0.3.0
       - run: sudo apt-get install -y libmysqlclient-dev mysql-client
       - run: dockerize -wait tcp://localhost:3305 -timeout 1m
       - run: mysql -u ubuntu circle_test < schema/start.sql
