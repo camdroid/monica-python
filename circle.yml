@@ -14,7 +14,7 @@ jobs:
       - checkout
       - run: sudo apt-get update
       - run: sudo apt-get install -y libmysqlclient-dev mysql-client
-      - run: dockerize -wait tcp://localhost:3305 -timeout 1m
+      - run: dockerize -wait tcp://localhost:3306 -timeout 1m
       - run: mysql -u ubuntu circle_test < schema/start.sql
       - run: pip install -r requirements.txt
       - run: python3 test_db/test.py
